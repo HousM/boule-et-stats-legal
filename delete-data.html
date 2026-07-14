@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suppression des données — Boule&Stats</title>
+<style>
+:root{color-scheme:light dark;--bg:#fff;--fg:#1a1a1a;--muted:#55606c;--accent:#1e3a8a;--line:#e5e7eb;--code:#f4f4f5}
+@media(prefers-color-scheme:dark){:root{--bg:#0b0f19;--fg:#e8e8ea;--muted:#9ca3af;--accent:#93c5fd;--line:#1f2937;--code:#111827}}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;padding:2rem 1rem;max-width:720px;margin:0 auto}
+h1{color:var(--accent);margin-top:0}
+h2{border-bottom:1px solid var(--line);padding-bottom:.3em;margin-top:2em}
+a{color:var(--accent)}
+code{background:var(--code);padding:.1em .3em;border-radius:3px;font-size:.95em}
+.muted{color:var(--muted);font-size:.9em}
+ul li{margin:.4em 0}
+</style>
+</head>
+<body>
+<h1>Suppression des données — Boule&Stats</h1>
+<p class="muted">Application : <strong>Boule&Stats</strong> · Éditeur : <strong>MPRO'ACT SAS</strong> · Dernière mise à jour : 14 juillet 2026.</p>
+
+<h2>1. Données concernées</h2>
+<p>Boule&Stats fonctionne en <strong>mode invité</strong> : aucun compte n'est créé, aucun nom, email ou identifiant personnel n'est demandé ni stocké. Les seules données qui existent sont :</p>
+<ul>
+  <li><strong>Données locales sur votre appareil</strong> (100 % chez vous) : historique des tirages téléchargés, grilles enregistrées, préférences d'affichage, confirmation d'âge.</li>
+  <li><strong>Token push anonyme Firebase Cloud Messaging</strong>, généré uniquement si vous avez activé l'option « Recevoir les résultats après chaque tirage » dans les Réglages. Ce token n'est pas rattaché à votre identité.</li>
+</ul>
+
+<h2>2. Comment demander la suppression</h2>
+
+<h3>Option A — Suppression immédiate (recommandée)</h3>
+<ul>
+  <li><strong>Désinstaller l'application</strong> : supprime immédiatement et intégralement toutes les données locales (base SQLite + préférences).</li>
+  <li><strong>Désactiver le switch notifications</strong> dans Réglages → Notifications : désabonne le token push des topics côté serveur Firebase, ce qui rend le token inutilisable et le fait expirer sous 60 jours d'inactivité.</li>
+</ul>
+<p>Ces deux actions ne demandent aucune démarche auprès de MPRO'ACT et ne nécessitent aucun email.</p>
+
+<h3>Option B — Demande explicite par email</h3>
+<p>Vous pouvez adresser une demande de suppression à l'éditeur :</p>
+<p><strong>Email</strong> : <a href="mailto:contact@mproact.com?subject=Suppression%20de%20mes%20donn%C3%A9es%20Boule%26Stats">contact@mproact.com</a></p>
+<p>Précisez dans votre message :</p>
+<ul>
+  <li>Le nom de l'application (« Boule&Stats »).</li>
+  <li>Optionnel : la date approximative d'installation et le modèle d'appareil, si vous souhaitez que nous purgions les journaux techniques associés à votre token (voir §3).</li>
+</ul>
+<p>MPRO'ACT répond sous <strong>30 jours ouvrés</strong> (délai RGPD).</p>
+
+<h2>3. Ce qui est effectivement supprimé, et quand</h2>
+<table style="border-collapse:collapse;width:100%">
+  <thead>
+    <tr style="border-bottom:2px solid var(--line)">
+      <th style="text-align:left;padding:.6em 0">Donnée</th>
+      <th style="text-align:left;padding:.6em 0">Délai de suppression</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid var(--line)"><td style="padding:.6em 0">Base locale SQLite (tirages, grilles)</td><td style="padding:.6em 0">Immédiat (désinstallation)</td></tr>
+    <tr style="border-bottom:1px solid var(--line)"><td style="padding:.6em 0">Préférences (SharedPreferences)</td><td style="padding:.6em 0">Immédiat (désinstallation)</td></tr>
+    <tr style="border-bottom:1px solid var(--line)"><td style="padding:.6em 0">Abonnement aux topics FCM</td><td style="padding:.6em 0">Immédiat (désactivation du switch)</td></tr>
+    <tr style="border-bottom:1px solid var(--line)"><td style="padding:.6em 0">Token FCM côté Firebase</td><td style="padding:.6em 0">Expire sous 60 jours d'inactivité (mécanisme Google)</td></tr>
+    <tr><td style="padding:.6em 0">Journaux techniques (logs serveur MPRO'ACT)</td><td style="padding:.6em 0">Purge automatique sous 30 jours ; purge sur demande &lt; 7 jours</td></tr>
+  </tbody>
+</table>
+
+<h2>4. Données conservées après suppression</h2>
+<p><strong>Aucune donnée personnelle n'est conservée.</strong> Les seules données maintenues en base par MPRO'ACT sont les <strong>résultats officiels des tirages FDJ</strong> (numéros gagnants publics, dates, jackpots), qui ne sont pas des données personnelles.</p>
+
+<h2>5. Contact</h2>
+<p>Pour toute question relative à vos données ou à cette procédure :</p>
+<p><strong>MPRO'ACT SAS</strong> — <a href="mailto:contact@mproact.com">contact@mproact.com</a> — 87 rue du Chemin Vert, 75011 Paris.</p>
+
+<p class="muted"><a href="index.html">← Retour à l'index des documents légaux</a></p>
+</body>
+</html>
