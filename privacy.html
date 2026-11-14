@@ -104,7 +104,7 @@
   <main>
     <header>
       <h1>Politique de confidentialité — Boule&amp;Stats</h1>
-      <p>Dernière mise à jour&nbsp;: 8 juillet 2026.</p>
+      <p>Dernière mise à jour&nbsp;: août 2026 (v1.1 — ajout §4.4 identifiant d'appareil).</p>
     </header>
 
     <p>
@@ -192,6 +192,32 @@
       à jour de cette politique.
     </p>
 
+    <h3>4.4 Identifiant d'appareil — prévention de la fraude (abonnement)</h3>
+    <p>
+      Pour faire fonctionner l'<strong>essai gratuit de 7 jours</strong> et la
+      <strong>validation des achats</strong> de façon fiable, l'application
+      transmet au backend <strong>Supabase</strong> (hébergé par MPRO'ACT) un
+      <strong>identifiant d'appareil</strong>, à seule fin de
+      <strong>prévention de la fraude</strong> :
+    </p>
+    <ul>
+      <li>il s'agit d'un <strong>haché (SHA-256) de l'identifiant Android
+        (<code>ANDROID_ID</code>)</strong>, jamais de l'identifiant brut&nbsp;;</li>
+      <li>il permet uniquement de rattacher un appareil à son état
+        d'essai/achat (par ex. empêcher qu'un simple effacement des données
+        relance indéfiniment l'essai gratuit)&nbsp;;</li>
+      <li>il <strong>n'est pas rattaché à votre identité</strong>, n'est
+        <strong>pas partagé</strong> avec des tiers, et n'est <strong>jamais
+        utilisé à des fins publicitaires ou de suivi</strong>&nbsp;;</li>
+      <li>il est conservé le temps nécessaire à la gestion de l'abonnement et
+        peut être supprimé sur demande.</li>
+    </ul>
+    <p>
+      Cette collecte est déclarée dans la section « Sécurité des données » de
+      la fiche Google Play (catégorie « Identifiants de l'appareil », finalité
+      « Prévention de la fraude, sécurité et conformité »).
+    </p>
+
     <h2>5. Publicité — absence totale</h2>
     <p>
       L'application <strong>ne diffuse aucune publicité</strong> et
@@ -217,8 +243,13 @@
           <td>Date du dernier tirage local, jeu concerné</td>
         </tr>
         <tr>
+          <td>Supabase</td>
+          <td>Essai gratuit &amp; validation des achats (anti-fraude)</td>
+          <td>Identifiant d'appareil haché (SHA-256 d'<code>ANDROID_ID</code>), jeton d'achat Google Play</td>
+        </tr>
+        <tr>
           <td>Google (Play Store)</td>
-          <td>Distribution de l'application</td>
+          <td>Distribution &amp; facturation des achats</td>
           <td>Gestion technique par Google Play</td>
         </tr>
       </tbody>
