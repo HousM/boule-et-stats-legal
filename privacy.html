@@ -19,7 +19,7 @@
 </div>
     <header>
       <h1>Politique de confidentialité — Boule&amp;Stats</h1>
-      <p>Dernière mise à jour&nbsp;: août 2026 (v1.1 — ajout §4.4 identifiant d'appareil).</p>
+      <p>Dernière mise à jour&nbsp;: 15 novembre 2026 (v1.2 — extension à iOS).</p>
     </header>
 
     <p>
@@ -54,9 +54,9 @@
 
     <h2>3. Données stockées uniquement sur l'appareil</h2>
     <p>
-      Les données suivantes sont conservées dans le stockage local Android
-      (base SQLite + <code>SharedPreferences</code>) et ne quittent
-      <strong>jamais</strong> l'appareil&nbsp;:
+      Les données suivantes sont conservées dans le stockage local de
+      l'appareil — base SQLite et préférences du système, sur Android comme
+      sur iOS — et ne quittent <strong>jamais</strong> celui-ci&nbsp;:
     </p>
     <ul>
       <li>historique local des tirages téléchargés&nbsp;;</li>
@@ -116,8 +116,18 @@
       <strong>prévention de la fraude</strong> :
     </p>
     <ul>
-      <li>il s'agit d'un <strong>haché (SHA-256) de l'identifiant Android
-        (<code>ANDROID_ID</code>)</strong>, jamais de l'identifiant brut&nbsp;;</li>
+      <li>sa nature dépend du système&nbsp;:
+        <ul>
+          <li><strong>sur Android</strong>, il s'agit d'un <strong>haché
+            SHA-256 de l'identifiant <code>ANDROID_ID</code></strong>, jamais
+            de l'identifiant brut&nbsp;;</li>
+          <li><strong>sur iOS</strong>, aucun identifiant du système n'est
+            lu. L'application <strong>engendre elle-même un identifiant
+            aléatoire</strong>, sans rapport avec l'appareil ni avec son
+            propriétaire, et le conserve localement. Il disparaît à la
+            désinstallation&nbsp;;</li>
+        </ul>
+      </li>
       <li>il permet uniquement de rattacher un appareil à son état
         d'essai/achat (par ex. empêcher qu'un simple effacement des données
         relance indéfiniment l'essai gratuit)&nbsp;;</li>
@@ -128,9 +138,15 @@
         peut être supprimé sur demande.</li>
     </ul>
     <p>
-      Cette collecte est déclarée dans la section « Sécurité des données » de
-      la fiche Google Play (catégorie « Identifiants de l'appareil », finalité
-      « Prévention de la fraude, sécurité et conformité »).
+      Cette collecte est déclarée dans les deux boutiques&nbsp;: section
+      «&nbsp;Sécurité des données&nbsp;» de la fiche Google Play (catégorie
+      «&nbsp;Identifiants de l'appareil&nbsp;», finalité «&nbsp;Prévention de
+      la fraude, sécurité et conformité&nbsp;»), et questionnaire
+      «&nbsp;App Privacy&nbsp;» de la fiche App Store (catégories
+      «&nbsp;Identifiant d'appareil&nbsp;» et «&nbsp;Historique des
+      achats&nbsp;», usage «&nbsp;Fonctionnalité de l'app&nbsp;», données non
+      liées à l'identité de l'utilisateur et non utilisées à des fins de
+      suivi).
     </p>
 
     <h2>5. Publicité — absence totale</h2>
@@ -160,12 +176,17 @@
         <tr>
           <td>Supabase</td>
           <td>Essai gratuit &amp; validation des achats (anti-fraude)</td>
-          <td>Identifiant d'appareil haché (SHA-256 d'<code>ANDROID_ID</code>), jeton d'achat Google Play</td>
+          <td>Identifiant d'appareil (haché SHA-256 d'<code>ANDROID_ID</code> sur Android, identifiant aléatoire engendré par l'app sur iOS), justificatif d'achat de la boutique</td>
         </tr>
         <tr>
           <td>Google (Play Store)</td>
-          <td>Distribution &amp; facturation des achats</td>
+          <td>Distribution &amp; facturation des achats sur Android</td>
           <td>Gestion technique par Google Play</td>
+        </tr>
+        <tr>
+          <td>Apple (App Store)</td>
+          <td>Distribution &amp; facturation des achats sur iOS</td>
+          <td>Gestion technique par Apple&nbsp;; l'application ne reçoit jamais vos moyens de paiement</td>
         </tr>
       </tbody>
     </table>
@@ -209,8 +230,9 @@
     <h2>9. Sécurité</h2>
     <p>
       Les communications entre l'application et le backend sont
-      <strong>chiffrées en HTTPS/TLS</strong>. Le stockage local Android
-      est protégé par le sandboxing standard du système d'exploitation.
+      <strong>chiffrées en HTTPS/TLS</strong>. Le stockage local est protégé
+      par le cloisonnement standard du système d'exploitation, sur Android
+      comme sur iOS.
     </p>
 
     <h2>10. Modifications</h2>
